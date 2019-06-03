@@ -1,7 +1,9 @@
 package org.czy.auth2.example.controller;
 
+import org.czy.auth2.example.service.UserServiceDetailImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,6 +18,9 @@ import java.security.Principal;
 @RestController
 @RequestMapping("/users")
 public class UserController {
+
+    @Autowired
+    private UserServiceDetailImpl userServiceDetail;
     Logger logger = LoggerFactory.getLogger(UserController.class);
 
     @RequestMapping(value = "/current", method = RequestMethod.GET)
@@ -25,4 +30,6 @@ public class UserController {
         logger.info(">>>>>>>>>>>>>>>>>>>>>>>>");
         return principal;
     }
+
+
 }
